@@ -1,0 +1,58 @@
+body {
+    position: relative; /* Ensure the body is the positioning context */
+}
+
+.loader {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    border-radius: 50%;
+    border-top: 16px solid blue;
+    border-right: 16px solid green;
+    border-bottom: 16px solid red;
+    border-left: 16px solid pink;
+    background: transparent;
+    width: 30px;
+    height: 30px;
+    z-index: 1000; /* Ensure it appears above other content */
+    animation: spin 2s linear infinite;
+}
+
+/* Tooltip styling */
+.highlight-red::before {
+    content: attr(data-source); /* Display the value of data-source attribute as content */
+    position: absolute; /* Position the tooltip absolutely */
+    z-index: 1; /* Ensure it appears above other content */
+    background-color: black; /* Tooltip background color */
+    font-weight: 100;
+    color: white; /* Tooltip text color */
+    padding: 5px; /* Padding around the tooltip text */
+    border-radius: 5px; /* Rounded corners */
+    visibility: hidden; /* Hide tooltip by default */
+    opacity: 0; /* Make it transparent initially */
+    transition: opacity 0.3s; /* Smooth transition for opacity */
+    bottom: 100%; /* Position tooltip below the span */
+    left: 50%; /* Center tooltip horizontally */
+    transform: translateX(-50%); /* Center tooltip horizontally */
+}
+
+/* Show tooltip on hover */
+.highlight-red:hover::before {
+    visibility: visible; /* Show tooltip on hover */
+    opacity: 1; /* Fully opaque */
+}
+
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.highlight-red {
+    color: red !important;
+    text-decoration: underline !important;
+    font-weight: bold;
+    background-color: yellow;
+    position: relative;
+}
